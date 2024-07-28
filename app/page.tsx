@@ -5,6 +5,7 @@ import axios from "axios";
 // components
 import Heading from "@/components/app/heading";
 import BriefIntro from "@/components/app/brief";
+import Logo from "@/components/app/logo";
 
 
 const Home: React.FC = () => {
@@ -36,6 +37,8 @@ const Home: React.FC = () => {
 
   return (
     <div className="parent_wrapper">
+      <Logo></Logo>
+
       <Heading title={titleDOMElement}></Heading>
 
       <BriefIntro brief={brief}></BriefIntro>

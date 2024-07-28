@@ -15,6 +15,7 @@ const Heading: React.FC<HeadingProps> = ({ title }) => {
                 textAlign: 'center',
                 fontSize: 50,
                 whiteSpace: 'nowrap',
+                marginTop: 20
             }}>{title}</h1>
         </>
     )
