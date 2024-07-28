@@ -59,12 +59,32 @@
   }
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Share+Tech+Mono&display=swap');
+
 @layer base {
   * {
     @apply border-border;
   }
+
+  @font-face {
+    font-family: "Baunk";
+    src: url('/fonts/Baunk.ttf');
+  }
+
+  @font-face {
+    font-family: 'ShareTechMono-Regular';
+    src: url('/fonts/ShareTechMono-Regular.ttf');
+  }
+
   body {
     background: #0E0E0E !important;
     @apply bg-background text-foreground;
+  }
+
+  .parent_wrapper {
+    padding-left: 200px;
+    padding-right: 200px;
+    padding-top: 40px;
+    border: 1px solid none;
   }
 }
