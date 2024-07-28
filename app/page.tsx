@@ -1,11 +1,20 @@
 "use client"
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"
 import axios from "axios";
+import { EmblaOptionsType } from 'embla-carousel'
+import EmblaCarousel from '@/components/app/carousel/EmblaCarousel'
 
 // components
 import Heading from "@/components/app/heading";
 import BriefIntro from "@/components/app/brief";
 import Logo from "@/components/app/logo";
+
+// stylesheets
+import '@/app/embla.css'
+
+const OPTIONS: EmblaOptionsType = { loop: true }
+const SLIDE_COUNT = 8
+const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
 
 const Home: React.FC = () => {
@@ -23,7 +32,7 @@ const Home: React.FC = () => {
     }
 
     fetchDataDOC();
-  }, [])
+  }, []);
 
   const spanColorStylings = {
     color: '#AEFF00'
@@ -42,6 +51,13 @@ const Home: React.FC = () => {
       <Heading title={titleDOMElement}></Heading>
 
       <BriefIntro brief={brief}></BriefIntro>
+
+      <div style={{
+        marginTop: 90,
+        textAlign: 'center'
+      }}>
+        <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+      </div>
     </div>
   );
 }

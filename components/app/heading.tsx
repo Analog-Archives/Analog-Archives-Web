@@ -13,7 +13,7 @@ const Heading: React.FC<HeadingProps> = ({ title }) => {
                 fontFamily: 'Baunk',
                 textTransform: 'uppercase',
                 textAlign: 'center',
-                fontSize: 50,
+                fontSize: 45,
                 whiteSpace: 'nowrap',
                 marginTop: 20
             }}>{title}</h1>
