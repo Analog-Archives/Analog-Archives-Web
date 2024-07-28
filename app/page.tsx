@@ -8,6 +8,7 @@ import EmblaCarousel from '@/components/app/carousel/EmblaCarousel'
 import Heading from "@/components/app/heading";
 import BriefIntro from "@/components/app/brief";
 import Logo from "@/components/app/logo";
+import Articles from "@/components/app/articles/aricles";
 
 // stylesheets
 import '@/app/embla.css'
@@ -16,19 +17,32 @@ const OPTIONS: EmblaOptionsType = { loop: true }
 const SLIDE_COUNT = 8
 const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
 
+export interface ArticleProps {
+  title: string
+  description: string
+}
+interface FetchDataProps {
+  brief: string
+  articles: ArticleProps[]
+}
 
 const Home: React.FC = () => {
   const [brief, setBrief] = useState<string>("");
+  const [articles, setArticles] = useState<ArticleProps[]>([]);
 
   useEffect(() => {
     const fetchDataDOC = async () => {
       const apiEndpoint = '/data/content.json';
-      const response = await axios.get(apiEndpoint);
+      const response = await axios.get<FetchDataProps[]>(apiEndpoint);
 
       if (!response.data) {
         throw new Error("Error with response");
       }
-      setBrief(response.data[0].brief);
+      else {
+        setBrief(response.data[0].brief);
+        console.log(response.data[0].articles);
+        setArticles(response.data[0].articles);
+      }
     }
 
     fetchDataDOC();
@@ -46,7 +60,7 @@ const Home: React.FC = () => {
 
   return (
     <div className="parent_wrapper">
-      <Logo></Logo>
+      <Logo />
 
       <Heading title={titleDOMElement}></Heading>
 
@@ -58,6 +72,13 @@ const Home: React.FC = () => {
       }}>
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       </div>
+
+      <>
+        {articles.map((art, index) => {
+          <div style={{ color: 'white', fontSize: 30 }}>{index}</div>
+        })}
+      </>
+      <Articles articles={articles}></Articles>
     </div>
   );
 }

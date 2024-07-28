@@ -1,5 +1,23 @@
 [
     {
-        "brief": "Analog Archives is a dynamic haven for avant-garde technologists, artists, and coders. Our open-source, non-profit organization is dedicated to exploring the frontiers of technology and art. By fostering a collaborative environment, we push the boundaries of what is possible through a variety of experimental projects. At Analog Archives, we believe in the power of open-source development to democratize technology and art. Our community-driven projects invite anyone with a passion for innovation to join us in our quest to redefine the intersection of technology and creativity."
+        "brief": "Analog Archives is a dynamic haven for avant-garde technologists, artists, and coders. Our open-source, non-profit organization is dedicated to exploring the frontiers of technology and art. By fostering a collaborative environment, we push the boundaries of what is possible through a variety of experimental projects. At Analog Archives, we believe in the power of open-source development to democratize technology and art. Our community-driven projects invite anyone with a passion for innovation to join us in our quest to redefine the intersection of technology and creativity.",
+        "articles": [
+            {
+                "title": "title",
+                "description": "Brief description about the ressearch and Brief description about the ressearch"
+            },
+            {
+                "title": "title",
+                "description": "Brief description about the ressearch and Brief description about the ressearch"
+            },
+            {
+                "title": "title",
+                "description": "Brief description about the ressearch and Brief description about the ressearch"
+            },
+            {
+                "title": "title",
+                "description": "Brief description about the ressearch and Brief description about the ressearch"
+            }
+        ]
     }
 ]
