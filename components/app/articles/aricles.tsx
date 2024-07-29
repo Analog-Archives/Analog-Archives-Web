@@ -26,17 +26,20 @@ const Articles: React.FC<ArticleCompProps>
                     gap: 10
                 }}>
                     <>
-                        {console.log(articles.length)}
-                        {/* {articles.map((article, index) => {
-                            <div className="grid_item" key={index}>
-                                <div>s</div>
-                            </div>
-                        })} */}
+                        {articles.map((article, index) => (
+                            <>
+                                <ArticleCard
+                                    title={article.title}
+                                    description={article.description} />
+                            </>
+                        ))}
                     </>
+
+
                     {/* <div className="grid_item">1</div>
-                <div className="grid_item">2</div>
-                <div className="grid_item">3</div>
-                <div className="grid_item">4</div> */}
+                        <div className="grid_item">2</div>
+                        <div className="grid_item">3</div>
+                        <div className="grid_item">4</div> */}
                 </div>
             </div>
         )

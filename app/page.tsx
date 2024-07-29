@@ -21,31 +21,24 @@ export interface ArticleProps {
   title: string
   description: string
 }
-interface FetchDataProps {
+interface DataProps {
   brief: string
   articles: ArticleProps[]
 }
 
 const Home: React.FC = () => {
+  const [data, setData] = useState<DataProps[]>([]);
   const [brief, setBrief] = useState<string>("");
   const [articles, setArticles] = useState<ArticleProps[]>([]);
 
   useEffect(() => {
-    const fetchDataDOC = async () => {
-      const apiEndpoint = '/data/content.json';
-      const response = await axios.get<FetchDataProps[]>(apiEndpoint);
-
-      if (!response.data) {
-        throw new Error("Error with response");
-      }
-      else {
-        setBrief(response.data[0].brief);
-        console.log(response.data[0].articles);
-        setArticles(response.data[0].articles);
-      }
-    }
-
-    fetchDataDOC();
+    fetch('/data/content.json')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data); // Make sure this logs the expected data structure
+        setArticles(data[0].articles); // Adjust this line based on the actual data structure
+      })
+      .catch((error) => console.error('Error fetching articles:', error));
   }, []);
 
   const spanColorStylings = {
@@ -72,12 +65,7 @@ const Home: React.FC = () => {
       }}>
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       </div>
-
-      <>
-        {articles.map((art, index) => {
-          <div style={{ color: 'white', fontSize: 30 }}>{index}</div>
-        })}
-      </>
+      
       <Articles articles={articles}></Articles>
     </div>
   );
