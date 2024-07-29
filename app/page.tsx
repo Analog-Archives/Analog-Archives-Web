@@ -28,17 +28,36 @@ interface DataProps {
 
 const Home: React.FC = () => {
   const [data, setData] = useState<DataProps[]>([]);
-  const [brief, setBrief] = useState<string>("");
-  const [articles, setArticles] = useState<ArticleProps[]>([]);
+  const [brief, setBrief] = useState<string>(() => {
+    const savedBrief = localStorage.getItem('brief');
+    return savedBrief ? savedBrief : " "
+  });
+  const [articles, setArticles] = useState<ArticleProps[]>(() => {
+    const savedArticles = localStorage.getItem('articlesData');
+    return savedArticles ? JSON.parse(savedArticles) : []
+  });
 
   useEffect(() => {
-    fetch('/data/content.json')
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data); // Make sure this logs the expected data structure
-        setArticles(data[0].articles); // Adjust this line based on the actual data structure
-      })
-      .catch((error) => console.error('Error fetching articles:', error));
+    const fetchDataDOC = async () => {
+      const apiEndpoint = '/data/content.json';
+      const response = await axios.get<DataProps[]>(apiEndpoint);
+
+      if (!response.data) {
+        throw new Error("Error with response");
+      }
+      else {
+        setData(response.data);
+
+        // lcalstorage config
+        localStorage.setItem('brief', response.data[0].brief);
+        localStorage.setItem('articlesData', JSON.stringify(response.data[0].articles));
+
+        setBrief(response.data[0].brief);
+        setArticles(response.data[0].articles);
+      }
+    }
+
+    fetchDataDOC();
   }, []);
 
   const spanColorStylings = {
@@ -65,7 +84,7 @@ const Home: React.FC = () => {
       }}>
         <EmblaCarousel slides={SLIDES} options={OPTIONS} />
       </div>
-      
+
       <Articles articles={articles}></Articles>
     </div>
   );

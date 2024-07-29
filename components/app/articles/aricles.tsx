@@ -27,19 +27,13 @@ const Articles: React.FC<ArticleCompProps>
                 }}>
                     <>
                         {articles.map((article, index) => (
-                            <>
+                            <div key={index}>
                                 <ArticleCard
                                     title={article.title}
                                     description={article.description} />
-                            </>
+                            </div>
                         ))}
                     </>
-
-
-                    {/* <div className="grid_item">1</div>
-                        <div className="grid_item">2</div>
-                        <div className="grid_item">3</div>
-                        <div className="grid_item">4</div> */}
                 </div>
             </div>
         )
