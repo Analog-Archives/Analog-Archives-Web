@@ -1,29 +1,35 @@
 "use client"
 import React from "react";
+import Logo from "@/public/logo.png";
+import ArticleCard from "./article-card";
 
 // interfaces
 import { ArticleProps } from "@/app/page";
-import ArticleCard from "./article-card";
 
 interface ArticleCompProps {
     articles: ArticleProps[]
 }
 
+
 const Articles: React.FC<ArticleCompProps>
     = ({ articles }) => {
+
         return (
-            <div>
+            <div style={{ textAlign: 'center', marginTop: 35 }}>
                 {/* heading */}
                 <span style={{
                     color: 'white',
-                    fontFamily: 'ShareTechMono-Regular',
+                    fontFamily: 'Baunk',
+                    fontSize: 18,
+                    textTransform: 'uppercase',
                 }}>Research / Articles</span>
 
                 {/* grids */}
                 <div className="grid_wrapper" style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(4, 1fr)',
-                    gap: 10
+                    gap: 10,
+                    marginTop: 40
                 }}>
                     <>
                         {articles.map((article, index) => (
