@@ -12,6 +12,7 @@ import Articles from "@/components/app/articles/aricles";
 
 // stylesheets
 import '@/app/embla.css'
+import FAQ from "@/components/app/faq";
 
 const OPTIONS: EmblaOptionsType = { loop: true }
 const SLIDE_COUNT = 8
@@ -86,6 +87,8 @@ const Home: React.FC = () => {
       </div>
 
       <Articles articles={articles}></Articles>
+
+      <FAQ  />
     </div>
   );
 }

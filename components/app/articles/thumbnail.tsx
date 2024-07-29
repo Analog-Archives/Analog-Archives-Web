@@ -24,7 +24,7 @@ const Thumbnail: React.FC<ThumbnailProps> = ({ title }) => {
     const thumbnail = getThumbnail(title);
 
     return (
-        <><Image src={thumbnail} alt={title}></Image></>
+        <><Image style={{ borderRadius: 10 }} src={thumbnail} alt={title}></Image></>
     )
 }
 
